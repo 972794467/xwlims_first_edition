@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <title>xwlims-登录</title>
+        <link rel="stylesheet" href="../css/reset.css" />
+        <link rel="stylesheet" href="../css/footer.css" />
+        <link rel="stylesheet" href="../css/login.css" />
+        <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    </head>
+
+    <body>
+        <div class="c_container">
+            <div class="c_login_logo_container">
+                <img class="c_login_logo" src="../img/logo.gif" />
+            </div>
+            <div class="c_login_container">
+                <div class="c_login">
+                    <div class="c_login_title_container">
+                        <p class="c_login_title">登录</p>
+                    </div>
+                    <hr class="c_login_hr" />
+                    <div class="c_login_form_container">
+                        <form>
+                            <div class="c_login_text">
+                                <div class="c_login_user_name_container">
+                                    <input type="text" placeholder="&nbsp用户名" />
+                                </div>
+                                <div class="c_login_user_pswd_container">
+                                    <input type="password" placeholder="&nbsp密码" />
+                                </div>
+                            </div>
+                            <div class="c_user_autologin_container">
+                                <input class="c_autologin_checkbox" type="checkbox" />
+                                <span class="c_user_autologin_text">7天自动登录</span>
+                            </div>
+                            <div class="c_login_button_container">
+                                <button class="c_login_button">登录</button>
+                            </div>
+                        </form>
+                        <div class="c_login_bottom">
+                            <div class="c_login_toregister_container">
+                                <a class="c_login_toregister" href="register.html">没有账号?去注册</a>
+
+                            </div>
+                            <div class="c_login_forgot_container">
+                                <a class="c_login_forgot" href="register.html">忘记密码</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="id_footer">
+        </footer>
+        <script type="text/javascript">
+            $(function() {
+                $("#id_footer").load("footer.html");
+            })
+        </script>
+    </body>
+
+</html>

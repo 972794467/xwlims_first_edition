@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+        <title>XW-LIMS</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/sidebar.css" />
+    </head>
+
+    <body>
+        <header id="id_header">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <link rel="stylesheet" href="../css/header.css" />
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                        <a class="navbar-brand" href="#" onclick="changePage(0)">XW-LIMS</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <div class="navbar-right">
+
+                            <ul class="nav navbar-nav">
+                                <li class="c_navbar_form">
+                                    <form class="navbar-form">
+                                        <input type="text" class="form-control" placeholder="Search...">
+                                        <div class="c_header_search_icon">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </div>
+                                    </form>
+                                </li>
+                                <li class="c_header_login">
+                                    <a class="c_header_message" href="#">
+                                        <span class="glyphicon glyphicon-envelope"></span>
+                                    </a>
+                                </li>
+                                <li class="dropdown c_header_login">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <u>
+                                <span id="login_user" class="c_header_user_name">思维</span>
+                            </u>
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li class=" page dropdown-li">
+                                            <a href="#user-info">个人信息</a>
+                                        </li>
+                                        <li class=" page dropdown-li">
+                                            <a href="#user-manage">退出登录</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="c_header_notlogin">
+                                    <a class="c_header_message c_header_notlogin" href="login.html">登录</a>
+                                </li>
+                                <li class="c_header_notlogin">
+                                    <a class="c_header_message c_header_notlogin" href="register.html"> 注册</a>
+                                </li>
+                            </ul>
+                            <ul id="id_navbar" class="nav navbar-nav c_header_sidebar">
+                                <li id="id_homepage_page_h" onclick="changePage(0)">
+                                    <a href="#">首页 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li id="id_group_page_h" onclick="changePage(1)">
+                                    <a href="#">课题组</a>
+                                </li>
+                                <li id="id_users_page_h" onclick="changePage(2)">
+                                    <a href="#">用户列表</a>
+                                </li>
+                                <li id="id_instrument_page_h" onclick="changePage(3)">
+                                    <a href="#">仪器列表</a>
+                                </li>
+                                <li id="id_appointment_page_h" onclick="changePage(4)">
+                                    <a href="#">预约管理</a>
+                                </li>
+                                <li id="id_statistics_page_h" onclick="changePage(5)">
+                                    <a href="#">仪器统计</a>
+                                </li>
+                                <li id="id_reim_page_h" onclick="changePage(6)">
+                                    <a href="#">转账报销</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container-fluid">
+            <div class="row">
+                <div id="id_sidebar" class="col-sm-2 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                        <li id="id_homepage_page_s" onclick="changePage(0)">
+                            <a href="#">首页 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li id="id_group_page_s" onclick="changePage(1)">
+                            <a href="#">课题组</a>
+                        </li>
+                        <li id="id_users_page_s" onclick="changePage(2)">
+                            <a href="#">用户列表</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li id="id_instrument_page_s" onclick="changePage(3)">
+                            <a href="#">仪器列表</a>
+                        </li>
+                        <li id="id_appointment_page_s" onclick="changePage(4)">
+                            <a href="#">预约管理</a>
+                        </li>
+                        <li id="id_statistics_page_s" onclick="changePage(5)">
+                            <a href="#">仪器统计</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li id="id_reim_page_s" onclick="changePage(6)">
+                            <a href="#">转账报销</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+            <div id="id_page_container" class="container-fluid">
+
+            </div>
+
+        </div>
+
+        <footer id="id_footer">
+
+        </footer>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="../js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="../js/lib.js"></script>
+        <script>
+            function changePage(intPageNum) {
+                var arrPage = [
+                    "homepage",
+                    "group",
+                    "users",
+                    "instrument",
+                    "appointment",
+                    "statistics",
+                    "reim",
+                ];
+                var strPage = arrPage[intPageNum];
+                $("#id_page_container").load(strPage + ".html");
+                setCookie("current_page", intPageNum, 256);
+
+                $("#id_sidebar li.active").removeClass("active");
+                $("#id_navbar li.c_header_active").removeClass("c_header_active");
+                var strDomId = "id_" + strPage + "_page";
+                $("#" + strDomId + "_s").addClass("active");
+                $("#" + strDomId + "_h").addClass("c_header_active");
+            }
+
+            $(function() {
+                // $("#id_footer").load("footer.html");
+                document.body.addEventListener('touchstart', function() {});
+                var intCurrentPage = getCookie("current_page");
+                if("" == intCurrentPage) {
+                    intCurrentPage = 0;
+                }
+                changePage(intCurrentPage);
+            })
+        </script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/holder.min.js"></script>
+        <script type="text/javascript" src="../js/vue.min.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,110 @@
+.c_login_logo{
+    vertical-align: middle;
+    text-align: center;
+    margin: 3rem 0;
+}
+.c_login_hr{
+    width: 15rem;
+    opacity:0;
+    color: gray;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+.c_login{
+    width: auto;
+    width: 20rem;
+    height: 100%;
+    display: inline-block;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: black;
+}
+.c_login_logo_container{
+    text-align: center;
+}
+.c_login_container{
+    vertical-align: middle;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.c_login_title_container{
+    text-align: center;
+}
+.c_login_title{
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+}
+
+.c_login_form_container{
+    width: auto;
+}
+
+.c_login_text input{
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    height: 1.5rem;
+    width: 14rem;
+}
+
+.c_user_autologin_container{
+    font-size: 10px;
+    vertical-align: middle;
+    text-align: left;
+    margin-left: 3rem;
+}
+.c_user_autologin_text{
+    opacity: 0.8;
+}
+.c_login_button_container{
+    margin: 1rem 0rem;
+}
+.c_login_button{
+    width: 14rem;
+    height: 1.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    background: darkgray;
+    color: white;
+    border: none;
+}
+
+.c_login_button:hover{
+    background: gray;
+}
+
+.c_login_bottom{
+    font-size: 10px;
+    text-align: initial;
+    margin-bottom: 0.5rem;
+}
+.c_login_bottom a{
+    color: black;
+    opacity: 0.8;
+}
+.c_login_toregister_container{
+    width: 45%;
+    display: inline-block;
+    text-align: left;
+}
+.c_login_forgot_container{
+    width: 45%;
+    text-align: right;
+    display: inline-block;
+}
+
+.c_login_toregister{
+    padding-left: 3rem;
+}
+.c_login_forgot{
+    padding-right: 1.5rem;
+}
+
+@media screen and (max-width:415px) {
+    .c_login_toregister{padding-left: 2rem;} 
+    .c_login_forgot{
+    padding-right: 0.8rem;
+   }
+}

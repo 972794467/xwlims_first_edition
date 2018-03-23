@@ -1,0 +1,193 @@
+<div>
+    <link rel="stylesheet" href="../css/instrument.css" />
+    <div class="">
+        <ul id="id_instrument_tab" class="nav nav-tabs">
+            <li class="active">
+                <a href="#id_instrument_list_tab" data-toggle="tab"> 仪器列表</a>
+            </li>
+            <li>
+                <a href="#id_instrument_info_tab" data-toggle="tab" id="id_instrument_info_tab_name">仪器详情</a>
+            </li>
+        </ul>
+
+        <div id="id_group_tab_content" class="tab-content">
+            <div id="id_instrument_list_tab" class="tab-pane fade in active">
+                </br>
+
+                <h3>仪器列表</h3>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="id_search_instrument_name" placeholder="仪器名称">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="id_search_instrument_number" placeholder="设备编号">
+                    </div>
+                    <a class="btn btn-default" onclick="searchInstrument()">搜索</a>
+                </form>
+                <br />
+                <div class="table-responsive">
+                    <table id="id_user_list" class="table table-striped table-hover">
+                        <tr>
+                            <td>仪器名称</td>
+                            <td>设备编号</td>
+                            <td>地址</td>
+                            <td>当前使用者</td>
+                            <td>负责人</td>
+                            <td>操作</td>
+                        </tr>
+                        <tr v-for="user in users" class="active c_instrument_listitem">
+                            <td>{{user.instrument_name}}</td>
+                            <td>{{user.location}}</td>
+                            <td>{{user.admin}}</td>
+                            <td>{{user.admin}}</td>
+                            <td>{{user.admin}}</td>
+                            <td>
+                                <button type="button" class="btn btn-info btn-sm" v-on:click="apply_group">关注</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="page_list">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination pagination-lg">
+                            <li>
+                                <a v-on:click="pagePrevious" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li v-for="page_number in pages" v-bind:class="{active : page_number.is_active}" v-on:click="changePage(page_number.page_index)">
+                                <a v-bind:class="{hidden : page_number.is_hidden}">{{page_number.page_index}}</a>
+                            </li>
+                            <li>
+                                <a v-on:click="pageNext" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div id="id_instrument_info_tab" class="tab-pane fade">
+                <br />
+                <br />
+                <div class="c_instrument_userinfo row">
+                    <div class="c_instrument_avatar_container col-md-3  col-sm-3 col-xs-8 col-xs-offset-1">
+                        <img class="img-responsive c_instrument_avatar" src="../img/instrument.jpg" />
+                    </div>
+                    <div class="c_instrument_infolist_container col-md-7 col-sm-7 col-xs-12">
+                        <ul class=" c_instrument_infolist list-group">
+                            <li class="c_user_name list-group-item">仪器名称&nbsp;:&emsp;<strong>张德山</strong></li>
+                            <li class="c_user_name list-group-item">状态&emsp;&emsp;&nbsp;:&emsp;<strong>可用</strong></li>
+                            <li class="c_user_name list-group-item">使用费用&nbsp;:&emsp;<strong>可用</strong></li>
+                            <li class="list-group-item">型号&emsp;&emsp;&nbsp;:&emsp;<strong>本科生</strong></li>
+                            <li class="list-group-item">仪器编号&nbsp;:&emsp;<strong>本科生</strong></li>
+                            <li class="list-group-item">规格&emsp;&emsp;&nbsp;:&emsp;<strong>枸杞生命科学研究课题组</strong></li>
+                            <li class="list-group-item">放置地点&nbsp;:&emsp;<strong>西北农林科技大学生命学院</strong></li>
+                            <li class="list-group-item">所属单位&nbsp;:&emsp;<strong>计算机141</strong></li>
+                            <li class="list-group-item">负责人&emsp;&nbsp;:&emsp;<strong>87655678@out.com</strong></li>
+                            <li class="list-group-item">分类号&emsp;&nbsp;:&emsp;<strong>345678</strong></li>
+                        </ul>
+                        <div class=" c_instrument_infobutton row">
+                            <button id="id_instrument_info_follow_btn" class="btn btn-info col-lg-4 col-sm-5 col-xs-5">关注</button>
+                            <button class="btn btn-info col-lg-4 col-lg-offset-2 col-sm-5 col-xs-5">统计数据</button>
+                            <br />
+                            <button class="btn btn-danger col-lg-4 col-sm-5 col-xs-5">修改资料</button>
+                            <button class="btn btn-danger col-lg-4 col-lg-offset-2 col-sm-5 col-xs-5">故障报告</button></div>
+                    </div>
+                </div>
+
+                <div>
+
+                </div>
+
+                <ul id="id_instrument_info_tabs" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#id_instrument_info_appointment_tab" data-toggle="tab">预约</a>
+                    </li>
+                    <li>
+                        <a href="#id_instrument_info_detail_tab" data-toggle="tab">详细信息</a>
+                    </li>
+                    <li>
+                        <a href="#id_instrument_info_history_tab" data-toggle="tab">使用记录</a>
+                    </li>
+                </ul>
+
+                <div id="id_instrument_info_tabs_content" class="tab-content">
+                    <div id="id_instrument_info_appointment_tab" class="tab-pane fade in active">
+                        </br>
+                        <!--预约-->
+                    </div>
+                    <div id="id_instrument_info_detail_tab" class="tab-pane fade">
+                        </br>
+                        <ul class=" c_instrument_infolist list-group">
+                            <li class="c_user_name list-group-item">仪器名称&nbsp;:&emsp;<strong>张德山</strong></li>
+                            <li class="list-group-item">型号&emsp;&emsp;&nbsp;:&emsp;<strong>本科生</strong></li>
+                            <li class="list-group-item">仪器编号&nbsp;:&emsp;<strong>本科生</strong></li>
+                            <li class="list-group-item">规格&emsp;&emsp;&nbsp;:&emsp;<strong>枸杞生命科学研究课题组</strong></li>
+                            <li class="list-group-item">放置地点&nbsp;:&emsp;<strong>西北农林科技大学生命学院</strong></li>
+                            <li class="list-group-item">所属单位&nbsp;:&emsp;<strong>计算机141</strong></li>
+                            <li class="list-group-item">负责人&emsp;&nbsp;:&emsp;<strong>87655678@out.com</strong></li>
+                            <li class="list-group-item">制造国家&nbsp;:&emsp;<strong>345678</strong></li>
+                            <li class="list-group-item">价格&emsp;&emsp;&nbsp;:&emsp;<strong>345678</strong></li>
+                            <li class="list-group-item">生产厂家&nbsp;:&emsp;<strong>345678</strong></li>
+                            <li class="list-group-item">出厂日期&nbsp;:&emsp;<strong>345678</strong></li>
+                            <li class="list-group-item">生产日期&nbsp;:&emsp;<strong>345678</strong></li>
+                            <li class="list-group-item">技术指标&nbsp;:&emsp;<strong>345678</strong></li>
+                            <li class="list-group-item">主要功能&nbsp;:&emsp;<strong>345678</strong></li>
+                            <li class="list-group-item">主要附件及配置&nbsp;:&emsp;<strong>345678</strong></li>
+                        </ul>
+                    </div>
+                    <div id="id_instrument_info_history_tab" class="tab-pane fade">
+                        </br>
+                        <!--使用记录-->
+                        <div id="id_instrument_history_list_tab" class="tab-pane fade in active">
+                            <br />
+                            <div class="table-responsive">
+                                <table id="id_user_list" class="table table-striped table-hover">
+                                    <tr>
+                                        <td>使用人姓名</td>
+                                        <td>使用时间</td>
+                                        <td>使用状态</td>
+                                        <td>使用反馈</td>
+                                        <td>负责人</td>
+                                    </tr>
+                                    <tr v-for="user in users" class="active c_instrument_listitem">
+                                        <td>{{user.instrument_name}}</td>
+                                        <td>{{user.location}}</td>
+                                        <td>{{user.admin}}</td>
+                                        <td>{{user.admin}}</td>
+                                        <td>{{user.admin}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="page_list">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination pagination-lg">
+                                        <li>
+                                            <a v-on:click="pagePrevious" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li v-for="page_number in pages" v-bind:class="{active : page_number.is_active}" v-on:click="changePage(page_number.page_index)">
+                                            <a v-bind:class="{hidden : page_number.is_hidden}">{{page_number.page_index}}</a>
+                                        </li>
+                                        <li>
+                                            <a v-on:click="pageNext" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
