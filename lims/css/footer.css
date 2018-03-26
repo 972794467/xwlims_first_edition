@@ -3,6 +3,8 @@
     bottom: 0;
     width: 100%;
     height: auto;
+    position: fixed;
+    bottom: 0;
 }
 .c_footer div p{
     text-align:center;

@@ -1,5 +1,9 @@
 <div>
     <link rel="stylesheet" href="../css/instrument.css" />
+    <link href='../css/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
+    <link href='../css/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <script src='../js/fullcalendar/moment.min.js'></script>
+    <script src='../js/fullcalendar/fullcalendar.min.js'></script>
     <div class="">
         <ul id="id_instrument_tab" class="nav nav-tabs">
             <li class="active">
@@ -89,8 +93,8 @@
                             <li class="list-group-item">分类号&emsp;&nbsp;:&emsp;<strong>345678</strong></li>
                         </ul>
                         <div class=" c_instrument_infobutton row">
-                            <button id="id_instrument_info_follow_btn" class="btn btn-info col-lg-4 col-sm-5 col-xs-5">关注</button>
-                            <button class="btn btn-info col-lg-4 col-lg-offset-2 col-sm-5 col-xs-5">统计数据</button>
+                            <button id="id_instrument_info_follow_btn" class="btn btn-primary col-lg-4 col-sm-5 col-xs-5">关注</button>
+                            <button class="btn btn-primary col-lg-4 col-lg-offset-2 col-sm-5 col-xs-5">统计数据</button>
                             <br />
                             <button class="btn btn-danger col-lg-4 col-sm-5 col-xs-5">修改资料</button>
                             <button class="btn btn-danger col-lg-4 col-lg-offset-2 col-sm-5 col-xs-5">故障报告</button></div>
@@ -101,9 +105,9 @@
 
                 </div>
 
-                <ul id="id_instrument_info_tabs" class="nav nav-tabs">
+                <ul id="id_instrument_info_tabs" class="nav nav-tabs c_nav_small">
                     <li class="active">
-                        <a href="#id_instrument_info_appointment_tab" data-toggle="tab">预约</a>
+                        <a href="#id_instrument_info_appointment_tab" data-toggle="tab">预约情况</a>
                     </li>
                     <li>
                         <a href="#id_instrument_info_detail_tab" data-toggle="tab">详细信息</a>
@@ -116,7 +120,61 @@
                 <div id="id_instrument_info_tabs_content" class="tab-content">
                     <div id="id_instrument_info_appointment_tab" class="tab-pane fade in active">
                         </br>
-                        <!--预约-->
+                        <!--预约情况-->
+
+                        <script>
+                            $strNowDate = new Date().format("yyyy-MM-dd");
+                            console.log($strNowDate);
+                            $(document).ready(function() {
+                                $('#calendar').fullCalendar({
+                                    header: {
+                                        left: 'prev,next today',
+                                        center: 'title',
+                                        right: 'agendaWeek'
+                                    },
+                                    defaultDate: $strNowDate,
+                                    editable: false,
+                                    defaultView: 'agendaWeek',
+                                    height: 'auto',
+                                    allDaySlot: false,
+                                    slotEventOverlap: false,
+                                    navLinks: false, // can click day/week names to navigate views
+                                    slotLabelFormat: "HH:mm",
+                                    eventLimit: false, // allow "more" link when too many events
+                                    events: {
+                                        url: 'php/get-events.php',
+                                        error: function() {
+                                            $('#script-warning').show();
+                                        }
+                                    },
+                                    loading: function(bool) {
+                                        $('#loading').toggle(bool);
+                                    }
+                                });
+
+                            });
+                            var fixFcalT = setTimeout("fixFullcalendarStyle()", 500);
+
+                            function fixFullcalendarStyle() {
+                                console.log(111);
+                                if($(".fc-axis").css('width') != "32px") {
+                                    $(".fc-axis").css("width", "32px");
+                                    clearTimeout(fixFcalT);
+                                } else {
+                                    fixFcalT = setTimeout("fixFullcalendarStyle()", 500);
+                                }
+                            }
+                        </script>
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <span class="col-lg-8 col-sm-8 col-xs-8"></span>
+                                    <button class="btn btn-info col-lg-2 col-sm-2 col-xs-2 c_btn_appointment" v-on:click="addAppointment">+ 预约</button>
+                                </div>
+                            </div>
+                            <div id='calendar' class="col-lg-10 col-sm-12 col-xs-12"></div>
+                        </div>
+
                     </div>
                     <div id="id_instrument_info_detail_tab" class="tab-pane fade">
                         </br>

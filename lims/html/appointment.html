@@ -11,6 +11,35 @@
     <div id="id_appointment_tab_content" class="tab-content">
         <div id="id_current_appointment_tab" class="tab-pane fade in active">
             </br>
+            <!--当前预约-->
+            <div class="table-responsive">
+                <table id="id_group_list" class="table table-striped table-hover">
+                    <tr>
+                        <td>主题</td>
+                        <td>仪器名称</td>
+                        <td>预约时间</td>
+                        <td>状态</td>
+                        <td>类型</td>
+                        <td>操作</td>
+                    </tr>
+                    <tr v-for="instrument in instruments" class="active">
+                        <td>{{group.instrument_name}}</td>
+                        <td>{{group.location}}</td>
+                        <td>{{group.admin}}</td>
+                        <td>{{group.appointment_status}}</td>
+                        <td>{{group.appointment_time}}</td>
+                        <td>
+                            <div class="c_appointment_item_working">
+                                <button type="button" class="btn btn-primary btn-sm c_btn_listitem" v-on:click="muti">修改</button>
+                                <button type="button" class="btn btn-danger btn-sm c_btn_listitem" v-on:click="delete">取消</button>
+                            </div>
+                            <div class="c_appointment_item_feedback">
+                                <button type="button" class="btn btn-primary btn-sm c_btn_listitem" v-on:click="feedback">填写反馈</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
         </div>
         <div id="id_appointment_history_tab" class="tab-pane fade">
@@ -19,9 +48,11 @@
             <div class="table-responsive">
                 <table id="id_group_list" class="table table-striped table-hover">
                     <tr>
+                        <td>主题</td>
                         <td>仪器名称</td>
                         <td>预约时间</td>
                         <td>状态</td>
+                        <td>类型</td>
                         <td>花费</td>
                         <td>反馈</td>
                     </tr>
