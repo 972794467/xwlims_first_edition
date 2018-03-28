@@ -4,6 +4,11 @@
     <link href='../css/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
     <script src='../js/fullcalendar/moment.min.js'></script>
     <script src='../js/fullcalendar/fullcalendar.min.js'></script>
+    <script src="../js/timepicker/moment.min.js"></script>
+    <script src="../js/timepicker/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/timepicker/daterangepicker.css" />
+   <!-- <link rel="stylesheet" type="text/css" href="../css/timepicker/website.css" />
+    -->
     <div class="">
         <ul id="id_instrument_tab" class="nav nav-tabs">
             <li class="active">
@@ -169,7 +174,7 @@
                             <div class="col-lg-12 col-sm-12 col-xs-12">
                                 <div class="row">
                                     <span class="col-lg-8 col-sm-8 col-xs-8"></span>
-                                    <button class="btn btn-info col-lg-2 col-sm-2 col-xs-2 c_btn_appointment" v-on:click="addAppointment">+ 预约</button>
+                                    <button id="id_appointment_button" class="btn btn-info col-lg-2 col-sm-2 col-xs-2 c_btn_appointment" data-toggle="modal" data-target="#id_modal_appointment">+ 预约</button>
                                 </div>
                             </div>
                             <div id='calendar' class="col-lg-10 col-sm-12 col-xs-12"></div>
@@ -248,4 +253,88 @@
         </div>
     </div>
 </div>
+</div>
+
+<div class="modal fade" id="id_modal_appointment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">添加预约-<span id="id_modal_appointment_instrument_name">仪器名称</span></h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="id_modal_appointment_input_theme" class="col-sm-3">主题</label>
+                        <input type="text" class="col-sm-9 form-control" id="id_modal_appointment_input_theme" placeholder="预约主题">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_modal_appointment_datepicker" class="col-sm-3">预约时间</label>
+                        <input id="id_modal_appointment_datepicker" class="col-sm-9 form-control" type="text" name="daterange" value="2018-03-20 1:30 PM - 2018-04-1 2:00 PM" />
+                        <script type="text/javascript">
+                            $(function() {
+                                $('input[name="daterange"]').daterangepicker({
+                                    timePicker: true,
+                                    timePickerIncrement: 30,
+                                    timePicker24Hour: true,
+                                    locale: {
+                                        format: 'YYYY-MM-DD h:mm A'
+                                    }
+                                });
+                            });
+                            Date.prototype.format = function(format) {
+                                var o = {
+                                    "M+": this.getMonth() + 1, //month
+                                    "d+": this.getDate(), //day
+                                    "h+": this.getHours(), //hour
+                                    "m+": this.getMinutes(), //minute
+                                    "s+": this.getSeconds(), //second
+                                    "q+": Math.floor((this.getMonth() + 3) / 3), //quarter
+                                    "S": this.getMilliseconds() //millisecond
+                                }
+                                if(/(y+)/.test(format)) {
+                                    format = format.replace(RegExp.$1,
+                                        (this.getFullYear() + "").substr(4 - RegExp.$1.length))
+                                };
+                                if(/(A+)/.test(format)) {
+                                    var ampm = (this.getHours() >= 12) ? "PM" : "AM";
+                                    format = format.replace(RegExp.$1,
+                                        ampm)
+                                };
+                                for(var k in o) {
+                                    if(new RegExp("(" + k + ")").test(format))
+                                        format = format.replace(RegExp.$1,
+                                            RegExp.$1.length == 1 ? o[k] :
+                                            ("00" + o[k]).substr(("" + o[k]).length));
+                                }
+                                return format;
+                            }
+                            var strStartTime = new Date().format("yyyy-MM-dd h:mm A");
+                            var strEndTime = new Date(new Date().getTime() + 4 * 60 * 60 * 1000).format("yyyy-MM-dd h:mm A");
+                            $("#id_modal_appointment_datepicker").val(strStartTime + " - " + strEndTime);
+                        </script>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_modal_appointment_input_type" class="col-sm-3">类型</label>
+                        <select id="id_modal_appointment_input_type" class="col-sm-9 form-control">
+                            <option>预约</option>
+                            <option>送样</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_modal_appointment_input_comment" class="col-sm-3">备注</label>
+                        <input type="text" class="col-sm-9 form-control" id="id_modal_appointment_input_comment" placeholder="备注">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"> 确定预约</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
 </div>
