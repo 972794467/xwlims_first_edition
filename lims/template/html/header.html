@@ -1,0 +1,55 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <link rel="stylesheet" href="../css/header.css" />
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="navbar-brand" href="#">XW-LIMS</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div class="navbar-right">
+
+                <ul class="nav navbar-nav">
+                    <li class="c_navbar_form">
+                        <form class="navbar-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <div class="c_header_search_icon">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="c_header_login">
+                        <a class="c_header_message" href="#">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </a>
+                    </li>
+                    <li class="dropdown c_header_login">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <u>
+                                <span id="login_user" class="c_header_user_name">思维</span>
+                            </u>
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class=" page dropdown-li">
+                                <a href="#user-info">个人信息</a>
+                            </li>
+                            <li class=" page dropdown-li">
+                                <a href="#user-manage">退出登录</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="c_header_notlogin">
+                        <a class="c_header_message c_header_notlogin" href="login.html">登录</a>
+                    </li>
+                    <li class="c_header_notlogin">
+                        <a class="c_header_message c_header_notlogin" href="register.html"> 注册</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

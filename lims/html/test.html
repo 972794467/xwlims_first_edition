@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+
+        <script src="../js/jquery-3.3.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/timepicker/moment.min.js"></script>
+
+        <script src="../js/timepicker/daterangepicker.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/timepicker/daterangepicker.css" />
+
+        <link rel="stylesheet" type="text/css" href="../css/timepicker/website.css" />
+        <meta name="google-site-verification" content="1fP-Eo9i1ozV4MUlqZv2vsLv1r7tvYutUb6i38v0_vg" />
+    </head>
+
+    <body>
+        <div class="container main">
+            <div id="ex2" name="ex2">
+                <h3>Date and Time</h3>
+                <p>
+                    The Date Range Picker can also be used to select times. Hour, minute and (optional) second dropdowns are added below the calendars. An option exists to set the increment count of the minutes dropdown to e.g. offer only 15-minute or 30-minute increments.
+                </p>
+                <div class="row">
+                    <div class="col-md-7 col-xs-12">
+                        <!--<script src="https://gist.github.com/dangrossman/89a40223f5a8a892fbf1.js"></script>-->
+                    </div>
+                    <div class="col-md-5 col-xs-12">
+                        <h4>Demo:</h4>
+                        <input id="id_appointment_datepicker" class="pull-right" type="text" name="daterange2" value="2018-03-20 1:30 PM - 2018-04-1 2:00 PM" />
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function() {
+                        $('input[name="daterange2"]').daterangepicker({
+                            timePicker: true,
+                            timePickerIncrement: 10,
+                            timePicker24Hour: true,
+                            locale: {
+                                format: 'YYYY-MM-DD h:mm A'
+                            }
+                        });
+                    });
+                    Date.prototype.format = function(format) {
+                            var o = {
+                                "M+": this.getMonth() + 1, //month
+                                "d+": this.getDate(), //day
+                                "h+": this.getHours(), //hour
+                                "m+": this.getMinutes(), //minute
+                                "s+": this.getSeconds(), //second
+                                "q+": Math.floor((this.getMonth() + 3) / 3), //quarter
+                                "S": this.getMilliseconds() //millisecond
+                            }
+                            if(/(y+)/.test(format)){
+                                format = format.replace(RegExp.$1,
+                                (this.getFullYear() + "").substr(4 - RegExp.$1.length))
+                            };
+                            if(/(A+)/.test(format)){
+                                var ampm = (this.getHours() >= 12) ? "PM" : "AM";
+                                format = format.replace(RegExp.$1,
+                                ampm)
+                            };
+                            for(var k in o){
+                                if(new RegExp("(" + k + ")").test(format))
+                                    format = format.replace(RegExp.$1,
+                                        RegExp.$1.length == 1 ? o[k] :
+                                        ("00" + o[k]).substr(("" + o[k]).length));
+                            }
+                            return format;
+                        }
+                    var strStartTime = new Date().format("yyyy-MM-dd h:mm A");
+                    var strEndTime = new Date(new Date().getTime() + 4 * 60 * 60 * 1000).format("yyyy-MM-dd h:mm A");
+                    
+                        $("#id_appointment_datepicker").val(strStartTime + " - " + strEndTime);
+                </script>
+            </div>
+
+        </div>
+    </body>
+
+</html>

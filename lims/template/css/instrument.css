@@ -9,3 +9,10 @@
 .c_btn_appointment{
     margin-bottom: 10px;
 }
+
+.c_checkbox_lable{
+    font-weight: initial;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 5px;
+}
