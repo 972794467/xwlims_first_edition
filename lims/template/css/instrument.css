@@ -1,0 +1,18 @@
+.c_instrument_listitem{
+    cursor: pointer;
+}
+.c_instrument_infobutton button{
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.c_btn_appointment{
+    margin-bottom: 10px;
+}
+
+.c_checkbox_lable{
+    font-weight: initial;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 5px;
+}
